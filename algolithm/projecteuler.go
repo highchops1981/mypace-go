@@ -4,7 +4,72 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 )
+
+// 4
+type Calc interface {
+	calc() int
+}
+
+type Multiplication struct {
+	a int
+	b int
+}
+
+func (m *Multiplication) calc() int {
+	return m.a * m.b
+}
+
+type StringProcess interface {
+	process() string
+}
+
+type Reverse struct {
+	c string
+}
+
+func (s *Reverse) process() string {
+	arr := []rune(s.c)
+	for i,j := 0,len(arr)-1; i < j; i,j = i+1,j-1 {
+		arr[i], arr[j] = arr[j], arr[i]
+	}
+	
+	return string(arr)
+}
+
+func getMax() {
+
+	max := 0
+	palindromic := 0
+
+	for i := 100; i < 1000; i++ {
+	for j := 100; j < 1000; j++ {
+		
+		multiplication := Multiplication{i,j}
+		c := multiplication
+		palindromic = c.calc()
+		
+		reverse := Reverse{strconv.Itoa(palindromic)}
+		s := reverse
+		palindromicr,err := strconv.Atoi(s.process())
+		if err == nil {
+		}
+		
+		if  palindromic == palindromicr && max <= palindromic {
+			max = palindromic
+		}
+	
+	}}
+	
+	fmt.Println(max)
+	
+}
+
+func main() {
+	getMax()	
+}
+
 
 // 3
 func main() {
