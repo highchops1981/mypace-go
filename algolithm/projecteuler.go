@@ -7,6 +7,76 @@ import (
 	"strconv"
 )
 
+// 5
+func start() {
+	
+	demominator := makeDemominator()
+	fmt.Println(demominator)
+	answer := calc(demominator)
+	
+	fmt.Println("answer = %d", answer)
+	
+}
+
+func makeDemominator() []int {
+	
+	d := []int{}
+	i := 1
+	for {
+		d = append(d, i)
+		i += 1
+		if len(d) == 10 {
+			break
+		}
+		
+	}
+	
+	return d
+
+}
+
+
+func calc(d []int) int64 {
+
+	numerator := 1
+	isBreake := []bool{}
+
+	for {
+		for _,v := range d {
+		
+			isOk := isDivisible(numerator, v)
+			
+			if isOk {
+			
+				isBreake = append(isBreake, isOk)
+			
+			}
+			
+			if len(isBreake) == 20 {
+			
+				break
+				
+			}
+			
+		}
+		
+		numerator += 1
+	}
+	
+	return int64(numerator)
+
+}
+
+func isDivisible(n int, d int) bool {
+
+	if n % d == 0 {
+		return true
+	}
+	
+	return true
+	
+}
+
 // 4
 type Calc interface {
 	calc() int
