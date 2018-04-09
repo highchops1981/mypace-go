@@ -8,13 +8,15 @@ import (
 )
 
 // 5
+const max = 20
+
 func start() {
 	
 	demominator := makeDemominator()
 	fmt.Println(demominator)
 	answer := calc(demominator)
 	
-	fmt.Println("answer = %d", answer)
+	fmt.Println("answer =", answer)
 	
 }
 
@@ -25,7 +27,7 @@ func makeDemominator() []int {
 	for {
 		d = append(d, i)
 		i += 1
-		if len(d) == 10 {
+		if len(d) == max {
 			break
 		}
 		
@@ -38,10 +40,12 @@ func makeDemominator() []int {
 
 func calc(d []int) int64 {
 
-	numerator := 1
+	numerator := max
 	isBreake := []bool{}
-
+	
+	L:
 	for {
+		M:
 		for _,v := range d {
 		
 			isOk := isDivisible(numerator, v)
@@ -50,17 +54,22 @@ func calc(d []int) int64 {
 			
 				isBreake = append(isBreake, isOk)
 			
+			} else {
+			
+				break M
+			
 			}
 			
-			if len(isBreake) == 20 {
+			if len(isBreake) == max {
 			
-				break
+				break L
 				
 			}
 			
 		}
 		
-		numerator += 1
+		isBreake = []bool{}
+		numerator += max
 	}
 	
 	return int64(numerator)
@@ -73,7 +82,7 @@ func isDivisible(n int, d int) bool {
 		return true
 	}
 	
-	return true
+	return false
 	
 }
 
