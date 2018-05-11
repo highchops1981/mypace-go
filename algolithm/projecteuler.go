@@ -9,10 +9,6 @@ import (
 )
 
 // 6
-	"math"
-)
-
-// 6
 func answer() {
 	fmt.Println(sum2()-sum1())
 }
