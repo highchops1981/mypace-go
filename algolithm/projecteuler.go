@@ -5,7 +5,62 @@ package main
 import (
 	"fmt"
 	"strconv"
+	"math"
 )
+
+// 6
+	"math"
+)
+
+// 6
+func answer() {
+	fmt.Println(sum2()-sum1())
+}
+
+func sum1() int {
+
+	count := 1
+	sum := 0
+	
+	for {
+		sum += int(math.Pow(float64(count),2))
+		
+		if count == 100 {
+		
+			break
+			
+		}
+
+		count += 1
+		
+	}
+
+	return sum
+
+}
+
+func sum2() int {
+
+	count := 1
+	sum := 0
+	
+	for {
+		
+		sum += count
+		
+		if count == 100 {
+		
+			break
+			
+		}
+
+		count += 1
+		
+	}
+
+	return int(math.Pow(float64(sum),2))
+
+}
 
 // 5
 const max = 20
