@@ -8,6 +8,65 @@ import (
 	"math"
 )
 
+// 7
+
+func getIsPrime(v int) bool {
+
+	count := 2
+		
+	for {
+			
+		if v % count == 0 && v != count {
+			
+			return false
+		
+		}
+		
+		if count > (v / 2) {
+		
+			break
+			
+		} 
+		
+		count += 1
+		
+	}
+
+	return true
+
+}
+
+func calc() {
+	
+	primeCounter := 0
+	//counter := 1
+	//max := 5000
+	
+	counter := 48611
+	max := 5001
+	
+	for {
+	
+		counter += 1
+	
+		if getIsPrime(counter) {
+			
+			
+			primeCounter += 1
+		
+		}
+		
+		if primeCounter >= max {
+		
+			fmt.Println(counter)
+			break
+		}
+	
+	}
+	
+	
+}
+
 // 6
 func answer() {
 	fmt.Println(sum2()-sum1())
